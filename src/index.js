@@ -1,7 +1,7 @@
 
 import Wiscroll from './wiscroll.js';
 
-const el = document.querySelector(".wiscroll");
+// const el = document.querySelector(".wiscroll");
 
 // new Wiscroll(el).cancel();
 
@@ -71,25 +71,25 @@ const el = document.querySelector(".wiscroll");
 //     }
 // );
 
-new Wiscroll(el)
-.fromto(
-    "-0% top",
-    "0% bottom",
-    function(position, entry) { // position is from 0 to 1, it could be negative or greater than 1 if it's out of boundary
-        console.log(position);
-    },
-    {
-        init: function(position, entry) {
-            console.log("Init:" + position);
-        },
-        in: function(position, entry) {
-            console.log("In:" + position);
-        },
-        // note that because of throttling, out function could be executed before the last scroll function call
-        out: function(position, entry) {
-            console.log("Out:" + position);
-        },
-        delay: 150, // throttle delay
-        fromIsBelowTo: true
-    }
-);
+// new Wiscroll(el)
+// .fromto(
+//     "-0% top",
+//     "0% bottom",
+//     function(position, entry) { // position is from 0 to 1, it could be negative or greater than 1 if it's out of boundary
+//         console.log(position);
+//     },
+//     {
+//         init: function(position, entry) {
+//             console.log("Init:" + position);
+//         },
+//         in: function(position, entry) {
+//             console.log("In:" + position);
+//         },
+//         // note that because of throttling, out function could be executed before the last scroll function call
+//         out: function(position, entry) {
+//             console.log("Out:" + position);
+//         },
+//         delay: 150, // throttle delay
+//         fromIsBelowTo: true
+//     }
+// );
