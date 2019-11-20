@@ -1,7 +1,7 @@
 {
   "name": "wiscroll",
-  "version": "0.0.3",
-  "description": "Scroll JavaScript library by WebIsle (Tom Chen)",
+  "version": "0.0.4",
+  "description": "Scroll based animation JavaScript library",
   "main": "src/wiscroll.js",
   "repository": {
     "type": "git",
@@ -16,7 +16,8 @@
   },
   "keywords": [
     "scroll",
-    "animation"
+    "animation",
+    "IntersectionObserver"
   ],
   "author": "Tom Chen <tomchen.org@gmail.com>",
   "license": "MIT",

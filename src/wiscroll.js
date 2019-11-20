@@ -190,6 +190,7 @@ class Wiscroll {
 		this.observers.forEach((observer) => {
 			observer.unobserve(this.target);
 		});
+		return this;
 	}
 
 	on (positionMotionString, funcOrString, func2OrBoolean) {
@@ -307,6 +308,8 @@ class Wiscroll {
 			window.removeEventListener("scroll", scrollFunc, false);
 			options.out.call(this, position(), entry);
 		});
+
+		return this;
 
 	}
 
