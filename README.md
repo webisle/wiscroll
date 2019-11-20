@@ -83,7 +83,7 @@ new Wiscroll(target).on(
   * `out` (target's border is touching (target is leaving/going out of) root's line)
   * `down` (target's border is touching root's line, target is going down)
   * `up` (target's border is touching root's line, target is going up)
-* `function` [optional]: function to be executed when the above motion is achieved, it receives a parameter `entry` which is an [IntersectionObserverEntry object](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry)
+* `function` [optional]: function to be executed when the above position is reached, it receives a parameter `entry` which is an [IntersectionObserverEntry object](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserverEntry)
 * `initFunction` [optional]: function to be executed during the initial state (when the script has just been executed), it receives two parameters: `targetBIsHigher` boolean value and `entry` object
 
 ## .init() : initialization
@@ -107,8 +107,8 @@ new Wiscroll(target).init(
 </pre>
 However, it is recommanded you use initFunction in `.on()` instead of `.init()` to have fewer observers.
 
-## .fromto() : target changes continuously according to scroll position
-You can change the target progressively and continuously, or do whatever you want according to target's scroll position (a percentage) between the two positions you have specified
+## .fromto() : change target dynamically depending on scroll position
+You can change the target progressively and continuously, or do whatever you want dynamically depending on target's scroll position (a percentage) between the two positions you have specified
 ```javascript
 new Wiscroll(target).fromto(
     "-10% top",
