@@ -1,6 +1,10 @@
 # wiscroll
 
-Scroll animation JavaScript library. Vanilla js. Lightweight (around 1.6KB gzipped). More documentation and demo are coming.
+Scroll based animation JavaScript library. Vanilla js. Lightweight (around 1.6KB gzipped). More documentation and demo are coming.
+
+<p align="center">
+  <img width="378.4" height="891.2" src="https://raw.githubusercontent.com/webisle/wiscroll/master/img/position-demo-gif/position-demo.gif">
+</p>
 
 ## Installation
 ```bash
