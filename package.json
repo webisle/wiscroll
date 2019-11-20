@@ -15,14 +15,18 @@
     "server": "webpack-dev-server --open"
   },
   "keywords": [
-    "scroll"
+    "scroll",
+    "animation"
   ],
-  "author": "Tom Chen",
+  "author": "Tom Chen <tomchen.org@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
   },
-  "dependencies": {}
+  "dependencies": {},
+  "bugs": {
+    "url": "https://github.com/webisle/wiscroll/issues"
+  }
 }
