@@ -2,7 +2,7 @@
   "name": "wiscroll",
   "version": "0.0.2",
   "description": "Scroll JavaScript library by WebIsle (Tom Chen)",
-  "main": "dist/wiscroll.js",
+  "main": "src/wiscroll.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:webisle/wiscroll.git"
