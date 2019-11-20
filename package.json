@@ -1,6 +1,6 @@
 {
   "name": "wiscroll",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Scroll JavaScript library by WebIsle (Tom Chen)",
   "main": "src/wiscroll.js",
   "repository": {
