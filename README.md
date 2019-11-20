@@ -1,6 +1,6 @@
 # wiscroll
 
-Scroll based animation JavaScript library. Vanilla js, ES6. Lightweight (around 1.6KB minified & gzipped). IntersectionObserver and scroll event based. Performance driven. Created recently due to frustration with IntersectionObserver and existing libraries. The library does not handle CSS, but examples with CSS will be put in the documentation. More documentation and demo are coming.
+Scroll based animation JavaScript library. Vanilla js, 0 dependencies, ES6. Lightweight (around 1.6KB minified & gzipped). IntersectionObserver and scroll event based. Performance driven. Created recently due to frustration with IntersectionObserver and existing libraries. The library does not handle CSS, but examples with CSS will be put in the documentation. More documentation and demo are coming.
 
 <p align="center">
   <img width="378.4" height="891.2" src="https://raw.githubusercontent.com/webisle/wiscroll/master/img/position-demo-gif/position-demo.gif">
@@ -161,7 +161,6 @@ Basically, the target changes (scroll event is listened) only between position 1
 ```javascript
 new Wiscroll(target).cancel();
 ```
-*(I think for now `.cancel()` doesn't cancel scroll event listeners, OK I'll do it later)*
 
 ## CSS transition and animation
 The library does not handle CSS styles and animations due to separation of concerns, however, examples with CSS will be put in the documentation in the future.
@@ -181,7 +180,6 @@ If you have basic knowledge of CSS and its [transition](https://developer.mozill
 
 <details><summary><strong>To do</strong></summary>
 
-- [ ] `.cancel()` should cancel scroll event listeners as well
 - [ ] a lot of demo in HTML
 - [ ] see if scroll bar affect the calculation
 - [ ] window.innerHeight and entry.rootBounds.bottom give integers, see if it can cause problem
@@ -189,6 +187,7 @@ If you have basic knowledge of CSS and its [transition](https://developer.mozill
 - [ ] see if this.target.getBoundingClientRect().top should be changed
 - [ ] other tests
 - [ ] test in Edge and mobile browsers
+- [ ] transpile the lib (or not)
 - [ ] I'll see what I can do to support IE11 but frankly I think we should just drop it.
 
 </details>

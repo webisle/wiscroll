@@ -1,6 +1,6 @@
 {
   "name": "wiscroll",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Scroll based animation JavaScript library",
   "main": "src/wiscroll.js",
   "repository": {
@@ -15,9 +15,12 @@
     "server": "webpack-dev-server --open"
   },
   "keywords": [
-    "scroll",
-    "animation",
-    "IntersectionObserver"
+    "Scroll",
+    "Animation",
+    "IntersectionObserver",
+    "JavaScript",
+    "ECMAScript6",
+    "Parallax"
   ],
   "author": "Tom Chen <tomchen.org@gmail.com>",
   "license": "MIT",

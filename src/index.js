@@ -1,75 +1,74 @@
-
 import Wiscroll from './wiscroll.js';
 
 const el = document.querySelector(".wiscroll");
 
-new Wiscroll(el).cancel();
+// new Wiscroll(el).cancel();
 
-new Wiscroll(el).on("90% top", "active");
+// new Wiscroll(el).on("90% top", "active");
 
-new Wiscroll(el)
-.on(
-    "50% top",//50%, 50px, -50%, -50px ...
-    "topborderpassed", // class or space separated classes
-    true // add class(es) when target border is (true: lower; false: higher), otherwise remove class(es), optional, default is true
-);
+// new Wiscroll(el)
+// .on(
+//     "50% top",//50%, 50px, -50%, -50px ...
+//     "topborderpassed", // class or space separated classes
+//     true // add class(es) when target border is (true: lower; false: higher), otherwise remove class(es), optional, default is true
+// );
 
-new Wiscroll(el)
-.on(
-    "50% bottom",
-    "bottomborderpassed", // class or space separated classes
-    true
-);
+// new Wiscroll(el)
+// .on(
+//     "50% bottom",
+//     "bottomborderpassed", // class or space separated classes
+//     true
+// );
 
-/*
-.topborderpassed:not(.bottomborderpassed) {
-    // target element is on top of the viewport border
-}
-*/
+// /*
+// .topborderpassed:not(.bottomborderpassed) {
+//     // target element is on top of the viewport border
+// }
+// */
 
-new Wiscroll(el)
-.on(
-    "90% top",
-    function(entry) {
-        console.log("Target border is higher");
-    },
-    function(entry) {
-        console.log("Target border is lower");
-    }
-);
+// new Wiscroll(el)
+// .on(
+//     "90% top",
+//     function(entry) {
+//         console.log("Target border is higher");
+//     },
+//     function(entry) {
+//         console.log("Target border is lower");
+//     }
+// );
 
-new Wiscroll(el)
-.on(
-    "50% bottom in",
-    function(entry) {
-        console.log("Target border is passed");
-    },
-    function(targetBIsHigher, entry) {
-        if (targetBIsHigher) {
-            console.log("Init: target border is higher");
-        } else {
-            console.log("Init: target border is lower");
-        }
-    }
-);
+// new Wiscroll(el)
+// .on(
+//     "50% bottom in",
+//     function(entry) {
+//         console.log("Target border is passed");
+//     },
+//     function(targetBIsHigher, entry) {
+//         if (targetBIsHigher) {
+//             console.log("Init: target border is higher");
+//         } else {
+//             console.log("Init: target border is lower");
+//         }
+//     }
+// );
 
-new Wiscroll(el)
-.init(
-    "50% bottom",
-    function(targetBIsHigher, entry) {
-        if (targetBIsHigher) {
-            console.log("Init: target border is higher");
-        } else {
-            console.log("Init: target border is lower");
-        }
-    }
-)
-.on(
-    "50% bottom in",
-    function(entry) {
-        console.log("Target bottom border is in");
-    }
-);
+// new Wiscroll(el)
+// .init(
+//     "50% bottom",
+//     function(targetBIsHigher, entry) {
+//         if (targetBIsHigher) {
+//             console.log("Init: target border is higher");
+//         } else {
+//             console.log("Init: target border is lower");
+//         }
+//     }
+// )
+// .on(
+//     "50% bottom in",
+//     function(entry) {
+//         console.log("Target bottom border is in");
+//     }
+// );
 
 new Wiscroll(el)
 .fromto(

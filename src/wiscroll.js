@@ -1,16 +1,6 @@
 /**
- *  wiscroll (Scroll JavaScript library by WebIsle (Tom Chen))
+ *  wiscroll (Scroll based animation JavaScript library by WebIsle (Tom Chen))
  */
-
-/**
- * To do:
- * see if scroll bar affect the calculation
- * window.innerHeight and entry.rootBounds.bottom give integers, see if it can cause problem
- * see if border width can cause problem
- * see if this.target.getBoundingClientRect().top should be changed
- * other tests
- */
-
 
 const rootBorderMap = {
 	top: "0%",
@@ -107,8 +97,15 @@ const throttle = (func, delay) => {
 	};
 }
 
-// const zeroToHundred = [...Array(101).keys()].map((item, i) => item / 100);
+const fromtoDefaultOptions = {
+	init: null,
+	in: null,
+	out: null,
+	delay: 150,
+	fromIsBelowTo: true
+};
 
+// const zeroToHundred = [...Array(101).keys()].map((item, i) => item / 100);
 
 
 /**
@@ -127,10 +124,11 @@ class Wiscroll {
 		this.root = root;
 		this.rootEl = root || window;
 		this.observers = [];
+		this.listeners = [];
 
 	}
 	
-	observe (rootBorder, targetBorder, motionDirection, func, initFunc) {
+	observe(rootBorder, targetBorder, motionDirection, func, initFunc) {
 		let bcrCoord;
 		
 		if (rootBorder in rootBorderMap) { // assume you don't use inherited properties such as toString
@@ -186,14 +184,17 @@ class Wiscroll {
 		return this;
 	}
 
-	cancel () {
+	cancel() {
 		this.observers.forEach((observer) => {
 			observer.unobserve(this.target);
+		});
+		this.listeners.forEach((listener) => {
+			window.removeEventListener("scroll", listener, false);
 		});
 		return this;
 	}
 
-	on (positionMotionString, funcOrString, func2OrBoolean) {
+	on(positionMotionString, funcOrString, func2OrBoolean) {
 		const [rootBorder, targetBorder, motionDirection] = positionMotionString.split(" ");
 		/*
 		[
@@ -237,7 +238,7 @@ class Wiscroll {
 		return this;
 	}
 
-	init (positionString, initFunc) {
+	init(positionString, initFunc) {
 		const [rootBorder, targetBorder] = positionString.split(" ");
 		this.observe(rootBorder, targetBorder, "up", null, (targetBIsHigher, entry) => {
 			initFunc.call(this, targetBIsHigher, entry);
@@ -245,7 +246,7 @@ class Wiscroll {
 		return this;
 	}
 
-	fromto (posMotStrFrom, posMotStrTo, func, options) {
+	fromto(posMotStrFrom, posMotStrTo, func, options) {
 
 		const [
 			rootBorderFrom,
@@ -257,8 +258,10 @@ class Wiscroll {
 			targetBorderTo
 		] = posMotStrTo.split(" ");
 
+		options = Object.assign({}, fromtoDefaultOptions, options || {});
 
 		let scrollFunc;
+		let scrollFuncIndex;
 
 		const rootBorderPosFrom = calculateRootBorder(rootBorderFrom, this.rootEl, options.fromIsBelowTo, "px").rootBorderFromTop;
 		const rootBorderPosTo = calculateRootBorder(rootBorderTo, this.rootEl, !options.fromIsBelowTo, "px").rootBorderFromTop;
@@ -276,44 +279,49 @@ class Wiscroll {
 			// scroll events are fired after frame rendering, we don't need requestAnimationFrame here, however throttling might help
 			scrollFunc = throttle(() => {
 				func.call(this, position(), entry);
-			}, options.delay, {trailing: true});
-			options.in.call(this, position(), entry);
+			}, options.delay);
+			if (options.in) {options.in.call(this, position(), entry)};
 			window.addEventListener("scroll", scrollFunc, false);
+			scrollFuncIndex = this.listeners.push(scrollFunc) - 1;
 		}, (targetBorderIsHigher, entry) => {
 			const pos = position()
-			options.init.call(this, pos, entry);
+			if (options.init) {options.init.call(this, pos, entry)};
 			if (pos > 0 && pos < 1) {
 				scrollFunc = throttle(() => {
 					func.call(this, position(), entry);
-				}, options.delay, {trailing: true});
-				options.in.call(this, position(), entry);
+				}, options.delay);
+				if (options.in) {options.in.call(this, position(), entry)};
 				window.addEventListener("scroll", scrollFunc, false);
+				scrollFuncIndex = this.listeners.push(scrollFunc) - 1;
 			}
 		});
 
 		this.observe(rootBorderTo, targetBorderTo, options.fromIsBelowTo ? "down" : "up", (entry) => {
 			scrollFunc = throttle(() => {
 				func.call(this, position(), entry);
-			}, options.delay, {trailing: true});
-			options.in.call(this, position(), entry);
+			}, options.delay);
+			if (options.in) {options.in.call(this, position(), entry)};
 			window.addEventListener("scroll", scrollFunc, false);
+			scrollFuncIndex = this.listeners.push(scrollFunc) - 1;
 		});
 
 		this.observe(rootBorderTo, targetBorderTo, options.fromIsBelowTo ? "up" : "down", (entry) => {
 			window.removeEventListener("scroll", scrollFunc, false);
-			options.out.call(this, position(), entry);
+			delete this.listeners[scrollFuncIndex];
+			if (options.out) {options.out.call(this, position(), entry)};
 		});
 
 		this.observe(rootBorderFrom, targetBorderFrom, options.fromIsBelowTo ? "down" : "up", (entry) => {
 			window.removeEventListener("scroll", scrollFunc, false);
-			options.out.call(this, position(), entry);
+			delete this.listeners[scrollFuncIndex];
+			if (options.out) {options.out.call(this, position(), entry)};
 		});
 
 		return this;
 
 	}
 
-	fromTo (...args) {
+	fromTo(...args) {
 		this.fromto(args);
 		return this;
 	}
