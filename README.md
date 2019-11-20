@@ -166,7 +166,7 @@ new Wiscroll(target).cancel();
 ## CSS transition and animation
 The library does not handle CSS styles and animations due to separation of concerns, however, examples with CSS will be put in the documentation in the future.
  
-If you have basic knowledge of CSS and its [transition](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) and [animation](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations) modules, it's very easy to use this library to create awesome scroll based animations and effects including but definitely not limited to parallax effect, sticky menu, lazy load, etc., with or without CSS frameworks such as [Animate.css](https://daneden.github.io/animate.css/).
+If you have basic knowledge of CSS and its [transition](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Transitions/Using_CSS_transitions) and [animation](https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Animations/Using_CSS_animations) modules, it's very easy to use this library to create awesome scroll based animations and effects, including but definitely not limited to parallax effect, sticky menu, lazy load, etc., with or without CSS frameworks such as [Animate.css](https://daneden.github.io/animate.css/).
 
 ## Others
 
