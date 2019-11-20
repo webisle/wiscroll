@@ -113,7 +113,7 @@ You can change the target progressively and continuously, or do whatever you wan
 new Wiscroll(target).fromto(
     "-10% top",
     "20% bottom",
-    function(position, entry) { // position is from 0 to 1, it could be negative or greater than 1 if it's out of boundary
+    function(position, entry) { // position is from 0 to 1, could be < 0 or > 1 if out of boundary
         console.log(position);
     },
     {
@@ -123,7 +123,6 @@ new Wiscroll(target).fromto(
         in: function(position, entry) {
             console.log("In:" + position);
         },
-        // note that because of throttling, out function could be executed before the last scroll function call
         out: function(position, entry) {
             console.log("Out:" + position);
         },
@@ -134,7 +133,12 @@ new Wiscroll(target).fromto(
 ```
 ### Syntax
 <pre>
-.fromto("<i>rootBorderPositionFrom</i> <i>targetBorderPositionFrom</i>", "<i>rootBorderPositionTo</i> <i>targetBorderPositionTo</i>", <i>function</i>, <i>options</i>)
+.fromto(
+    "<i>rootBorderPositionFrom</i> <i>targetBorderPositionFrom</i>",
+    "<i>rootBorderPositionTo</i> <i>targetBorderPositionTo</i>",
+    <i>function</i>,
+    <i>options</i>
+)
 </pre>
 Basically, the target changes (scroll event is listened) only between position 1 (from) and position 2 (to).
 * `rootBorderPositionFrom`: specify a root border (or line) for position 1
