@@ -10,7 +10,7 @@ npm i wiscroll
 ```javascript
 import Wiscroll from 'wiscroll';
 ```
-## .on() : Toggle class when one of target's borders passes one of root's borders/lines
+## .on() : toggle class when one of target's borders passes one of root's borders/lines
 If target's top border passes root's 90% (from top) line, add class name "active" to the target, remove the class when scrolling back
 ```javascript
 const target = document.querySelector(".wiscroll");
@@ -25,7 +25,7 @@ new Wiscroll(target).on("90% top", "active");
 * `classes`: class name to toggle, could be one class or space-separated classes
 * `targetBorderIsHigher` [optional]: add class(es) when the specified target border is (true: higher; false: lower) than the specified root border, otherwise remove class(es), default is true
 
-## .on() : Do whatever you want when one of target's borders passes (or doesn't pass) one of root's borders/lines
+## .on() : do whatever you want when one of target's borders passes (or doesn't pass) one of root's borders/lines
 If target's top border is higher than root's 90% (from top) line, show "Target border is higher" in console, otherwise show "Target border is lower"
 ```javascript
 new Wiscroll(target).on("90% top",
@@ -46,7 +46,7 @@ new Wiscroll(target).on("90% top",
 * `functionWhenTargetHigher`: function to be executed when the specified target border is higher than the specified root border/line
 * `functionWhenTargetLower`: function to be executed when the specified target border is lower than the specified root border/line
 
-## .on() : Do whatever you want when target is entering (or leaving) one of root's borders/lines
+## .on() : do whatever you want when target is entering (or leaving) one of root's borders/lines
 When target's bottom border is touching (target is going into) root's 50% line, show "Target border is higher" in console
 ```javascript
 new Wiscroll(target).on(
