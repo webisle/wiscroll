@@ -1,0 +1,24 @@
+{
+  "name": "wiscroll",
+  "version": "0.0.1",
+  "description": "Scroll JavaScript library by WebIsle (Tom Chen)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build:dev": "webpack --progress --mode=development",
+    "build": "webpack --progress --mode=production",
+    "watch": "webpack --progress --watch",
+    "server": "webpack-dev-server --open"
+  },
+  "keywords": [
+    "scroll"
+  ],
+  "author": "Tom Chen",
+  "license": "MIT",
+  "devDependencies": {
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
+  },
+  "dependencies": {}
+}
