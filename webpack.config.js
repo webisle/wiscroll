@@ -1,7 +1,8 @@
 const path = require('path');
 const webpack = require('webpack');
-const PrettierPlugin = require("prettier-webpack-plugin");
+const PrettierPlugin = require('prettier-webpack-plugin');
 const getPackageJson = require('./scripts/getPackageJson');
+const TerserPlugin = require('terser-webpack-plugin');
 
 const {
   version,
@@ -11,7 +12,10 @@ const {
   author,
 } = getPackageJson('version', 'name', 'license', 'repository', 'author');
 
-const banner = `${name} v${version}
+const umdBanner = `${name} v${version} (UMD version)
+(c) ${author}, ${license} license`;
+
+const es6Banner = `${name} v${version} (ES6 Module version)
 (c) ${author}, ${license} license`;
 
 const config = {
@@ -52,7 +56,7 @@ const umdConfig = Object.assign({}, config, {
     ]
   },
   plugins: [
-    new webpack.BannerPlugin(banner)
+    new webpack.BannerPlugin(umdBanner)
   ]
 });
 
@@ -62,27 +66,19 @@ const es6Config = Object.assign({}, config, {
     filename: 'index.es6.js',
     path: path.resolve(__dirname, 'dist')
   },
-  module: {
-    rules: [
-      {
-        test: /\.m?js$/,
-        exclude: /(node_modules|bower_components)/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            presets: [
-              ["minify", {
-                "keepFnName": true
-              }]
-            ]
-          }
-        }
+  optimization: {
+    minimize: true,
+    minimizer: [new TerserPlugin({
+      extractComments: false,
+      terserOptions: {
+        module: true,
+        toplevel: true
       }
-    ]
+    })],
   },
   plugins: [
     new PrettierPlugin(),
-    new webpack.BannerPlugin(banner)
+    new webpack.BannerPlugin(es6Banner)
   ]
 });
 
