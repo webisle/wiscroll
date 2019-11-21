@@ -6,16 +6,23 @@ Scroll based animation JavaScript library. Vanilla js, 0 dependencies. Lightweig
   <img width="378.4" height="891.2" src="https://raw.githubusercontent.com/webisle/wiscroll/master/img/position-demo-gif/position-demo.gif">
 </p>
 
+
 ## Installation
+NPM install:
 ```bash
-npm i wiscroll
+npm install wiscroll
 ```
-## Import
+Then, import the ES6 module:
 ```javascript
 import Wiscroll from 'wiscroll';
 ```
+## Another way to install: <script>
+OR, add the script file directly in your HTML file:
+```html
+<script src="https://unpkg.com/wiscroll/dist/index.js"></script>
+```
 ## .on() : toggle class when one of target's borders passes one of root's borders/lines
-If target's top border passes root's 90% (from top) line, add class name "active" to the target, remove the class when scrolling back
+If target's top border passes root's 90% (from top) line, add class name "active" to the target, remove the class when scrolling back:
 ```javascript
 const target = document.querySelector('.wiscroll');
 new Wiscroll(target).on('90% top', 'active');
@@ -30,7 +37,7 @@ new Wiscroll(target).on('90% top', 'active');
 * `targetBorderIsHigher` [optional]: add class(es) when the specified target border is (true: higher; false: lower) than the specified root border, otherwise remove class(es), default is true
 
 ## .on() : do whatever you want when one of target's borders passes (or doesn't pass) one of root's borders/lines
-If target's top border is higher than root's 90% (from top) line, show "Target border is higher" in console, otherwise show "Target border is lower"
+If target's top border is higher than root's 90% (from top) line, show "Target border is higher" in console, otherwise show "Target border is lower":
 ```javascript
 new Wiscroll(target).on('90% top',
     function(entry) {
@@ -51,7 +58,7 @@ new Wiscroll(target).on('90% top',
 * `functionWhenTargetLower`: function to be executed when the specified target border is lower than the specified root border/line
 
 ## .on() : do whatever you want when target is entering (or leaving) one of root's borders/lines
-When target's bottom border is touching (target is going into) root's 50% line, show "Target border is higher" in console
+When target's bottom border is touching (target is going into) root's 50% line, show "Target border is higher" in console:
 ```javascript
 new Wiscroll(target).on(
     '50% bottom in',
@@ -60,7 +67,7 @@ new Wiscroll(target).on(
     }
 );
 ```
-By the way, you might want to deal with initial states (when the page has just loaded and script has just been executed). Let's add a function to do something when my target border is higher (and lower) than my root's line
+By the way, you might want to deal with initial states (when the page has just loaded and script has just been executed). Let's add a function to do something when my target border is higher (and lower) than my root's line:
 ```javascript
 new Wiscroll(target).on(
     '50% bottom in',
@@ -91,7 +98,7 @@ new Wiscroll(target).on(
 * `initFunction` [optional]: function to be executed during the initial state (when the script has just been executed), it receives two parameters: `targetBIsHigher` boolean value and `entry` object
 
 ## .init() : initialization
-The `initFunction` mentioned above can be put into `.init()` method
+The `initFunction` mentioned above can be put into `.init()` method:
 ```javascript
 new Wiscroll(target).init(
     '50% bottom',
@@ -112,7 +119,7 @@ new Wiscroll(target).init(
 However, it is recommanded you use initFunction in `.on()` instead of `.init()` to have fewer observers.
 
 ## .fromto() : change target dynamically depending on scroll position
-You can change the target progressively and continuously, or do whatever you want dynamically depending on target's scroll position (a percentage) between the two positions you have specified
+You can change the target progressively and continuously, or do whatever you want dynamically depending on target's scroll position (a percentage) between the two positions you have specified:
 ```javascript
 new Wiscroll(target).fromto(
     '-10% top',
