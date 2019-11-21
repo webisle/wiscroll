@@ -1,6 +1,6 @@
 # wiscroll
 
-Scroll based animation JavaScript library. Vanilla js, 0 dependencies, ES6. Lightweight (around 1.6KB minified & gzipped). IntersectionObserver and scroll event based. Performance driven. Created recently due to frustration with IntersectionObserver and existing libraries. The library does not handle CSS, but examples with CSS will be put in the documentation. More documentation and demo are coming.
+Scroll based animation JavaScript library. Vanilla js, 0 dependencies. Lightweight: around 2.5KB transpiled ES5 (or 1.7KB ES6) minified & gzipped. IntersectionObserver based. Performance driven. The library does not handle CSS, but examples with CSS will be put in the documentation. More documentation and demo are coming.
 
 <p align="center">
   <img width="378.4" height="891.2" src="https://raw.githubusercontent.com/webisle/wiscroll/master/img/position-demo-gif/position-demo.gif">
@@ -17,12 +17,12 @@ import Wiscroll from 'wiscroll';
 ## .on() : toggle class when one of target's borders passes one of root's borders/lines
 If target's top border passes root's 90% (from top) line, add class name "active" to the target, remove the class when scrolling back
 ```javascript
-const target = document.querySelector(".wiscroll");
-new Wiscroll(target).on("90% top", "active");
+const target = document.querySelector('.wiscroll');
+new Wiscroll(target).on('90% top', 'active');
 ```
 ### Syntax
 <pre>
-.on("<i>rootBorderPosition</i> <i>targetBorderPosition</i>", "<i>classes</i>", <i>targetBorderIsHigher</i>)
+.on('<i>rootBorderPosition</i> <i>targetBorderPosition</i>', '<i>classes</i>', <i>targetBorderIsHigher</i>)
 </pre>
 * `rootBorderPosition`: specify a root border (or line), could be `top`, `bottom`, percentage number (e.g. `90%`), pixel number (e.g. `40px`), must be followed by `%` or `px` even if it's 0 (e.g. `0%`), positive number is position from top, negative number is position from bottom (e.g. `-10%` : 10% from bottom)
 * `targetBorderPosition`: specify a target border, could be `top`, `bottom`
@@ -32,18 +32,18 @@ new Wiscroll(target).on("90% top", "active");
 ## .on() : do whatever you want when one of target's borders passes (or doesn't pass) one of root's borders/lines
 If target's top border is higher than root's 90% (from top) line, show "Target border is higher" in console, otherwise show "Target border is lower"
 ```javascript
-new Wiscroll(target).on("90% top",
+new Wiscroll(target).on('90% top',
     function(entry) {
-        console.log("Target border is higher");
+        console.log('Target border is higher');
     },
     function(entry) {
-        console.log("Target border is lower");
+        console.log('Target border is lower');
     }
 );
 ```
 ### Syntax
 <pre>
-.on("<i>rootBorderPosition</i> <i>targetBorderPosition</i>", <i>functionWhenTargetHigher</i>, <i>functionWhenTargetLower</i>)
+.on('<i>rootBorderPosition</i> <i>targetBorderPosition</i>', <i>functionWhenTargetHigher</i>, <i>functionWhenTargetLower</i>)
 </pre>
 * `rootBorderPosition`: see above
 * `targetBorderPosition`: see above
@@ -54,31 +54,31 @@ new Wiscroll(target).on("90% top",
 When target's bottom border is touching (target is going into) root's 50% line, show "Target border is higher" in console
 ```javascript
 new Wiscroll(target).on(
-    "50% bottom in",
+    '50% bottom in',
     function(entry) {
-        console.log("Target border is passed");
+        console.log('Target border is passed');
     }
 );
 ```
 By the way, you might want to deal with initial states (when the page has just loaded and script has just been executed). Let's add a function to do something when my target border is higher (and lower) than my root's line
 ```javascript
 new Wiscroll(target).on(
-    "50% bottom in",
+    '50% bottom in',
     function(entry) {
-        console.log("Target border is passed");
+        console.log('Target border is passed');
     },
     function(targetBIsHigher, entry) {
         if (targetBIsHigher) {
-            console.log("Init: target border is higher");
+            console.log('Init: target border is higher');
         } else {
-            console.log("Init: target border is lower");
+            console.log('Init: target border is lower');
         }
     }
 );
 ```
 ### Syntax
 <pre>
-.on("<i>rootBorderPosition</i> <i>targetBorderPosition</i> <i>motionDirection</i>", <i>function</i>, <i>initFunction</i>)
+.on('<i>rootBorderPosition</i> <i>targetBorderPosition</i> <i>motionDirection</i>', <i>function</i>, <i>initFunction</i>)
 </pre>
 * `rootBorderPosition`: see above
 * `targetBorderPosition`: see above
@@ -94,12 +94,12 @@ new Wiscroll(target).on(
 The `initFunction` mentioned above can be put into `.init()` method
 ```javascript
 new Wiscroll(target).init(
-    "50% bottom",
+    '50% bottom',
     function(targetBIsHigher, entry) {
         if (targetBIsHigher) {
-            console.log("Init: target border is higher");
+            console.log('Init: target border is higher');
         } else {
-            console.log("Init: target border is lower");
+            console.log('Init: target border is lower');
         }
     }
 )
@@ -107,7 +107,7 @@ new Wiscroll(target).init(
 ```
 ### Syntax
 <pre>
-.init("<i>rootBorderPosition</i> <i>targetBorderPosition</i>", <i>initFunction</i>)
+.init('<i>rootBorderPosition</i> <i>targetBorderPosition</i>', <i>initFunction</i>)
 </pre>
 However, it is recommanded you use initFunction in `.on()` instead of `.init()` to have fewer observers.
 
@@ -115,20 +115,20 @@ However, it is recommanded you use initFunction in `.on()` instead of `.init()` 
 You can change the target progressively and continuously, or do whatever you want dynamically depending on target's scroll position (a percentage) between the two positions you have specified
 ```javascript
 new Wiscroll(target).fromto(
-    "-10% top",
-    "20% bottom",
+    '-10% top',
+    '20% bottom',
     function(position, entry) { // position is from 0 to 1, could be < 0 or > 1 if out of boundary
         console.log(position);
     },
     {
         init: function(position, entry) {
-            console.log("Init:" + position);
+            console.log('Init:' + position);
         },
         in: function(position, entry) {
-            console.log("In:" + position);
+            console.log('In:' + position);
         },
         out: function(position, entry) {
-            console.log("Out:" + position);
+            console.log('Out:' + position);
         },
         delay: 150, // throttle delay
         fromIsBelowTo: true
@@ -138,8 +138,8 @@ new Wiscroll(target).fromto(
 ### Syntax
 <pre>
 .fromto(
-    "<i>rootBorderPositionFrom</i> <i>targetBorderPositionFrom</i>",
-    "<i>rootBorderPositionTo</i> <i>targetBorderPositionTo</i>",
+    '<i>rootBorderPositionFrom</i> <i>targetBorderPositionFrom</i>',
+    '<i>rootBorderPositionTo</i> <i>targetBorderPositionTo</i>',
     <i>function</i>,
     <i>options</i>
 )
@@ -174,7 +174,7 @@ If you have basic knowledge of CSS and its [transition](https://developer.mozill
 
 <details><summary><strong>Technical details</strong></summary>
 
-[IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver) has better performance but there are lots of situation it can't handle, having a scroll event listener that only listens inside the specified area with some throttling added up there might be a good choice.
+[IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/IntersectionObserver) has good performance and can handle every scenario our method `.on()` deals with. Unfortunately, it can't handle some situations related to our `.fromto()` method, having a scroll event listener that only listens inside the specified area with some throttling added up there might be a good choice.
 
 </details>
 
@@ -187,7 +187,6 @@ If you have basic knowledge of CSS and its [transition](https://developer.mozill
 - [ ] see if this.target.getBoundingClientRect().top should be changed
 - [ ] other tests
 - [ ] test in Edge and mobile browsers
-- [ ] transpile the lib (or not)
-- [ ] I'll see what I can do to support IE11 but frankly I think we should just drop it.
+- [ ] I'll see what I can do to support IE11, will a simple polyfill of IntersectionObserver make it work? I'll try. But frankly I think we should just drop IE11.
 
 </details>

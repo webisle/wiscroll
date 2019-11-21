@@ -1,30 +1,44 @@
 {
   "name": "wiscroll",
-  "version": "0.0.5",
+  "version": "0.1.0",
   "description": "Scroll based animation JavaScript library",
-  "main": "src/wiscroll.js",
+  "main": "dist/index.js",
+  "module": "dist/index.es6.js",
   "repository": {
     "type": "git",
     "url": "git@github.com:webisle/wiscroll.git"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "build:dev": "webpack --progress --mode=development",
     "build": "webpack --progress --mode=production",
-    "watch": "webpack --progress --watch",
-    "server": "webpack-dev-server --open"
+    "test": "jest",
+    "start": "webpack-dev-server --open"
   },
+  "homepage": "https://github.com/webisle/wiscroll",
   "keywords": [
-    "Scroll",
-    "Animation",
+    "scroll",
+    "animation",
     "IntersectionObserver",
-    "JavaScript",
-    "ECMAScript6",
-    "Parallax"
+    "javascript",
+    "library",
+    "ecmascript6",
+    "parallax"
   ],
   "author": "Tom Chen <tomchen.org@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@babel/cli": "^7.7.0",
+    "@babel/core": "^7.7.2",
+    "@babel/polyfill": "^7.7.0",
+    "@babel/preset-env": "^7.7.1",
+    "babel-jest": "^24.9.0",
+    "babel-loader": "^8.0.6",
+    "babel-preset-minify": "^0.5.1",
+    "eslint": "^6.6.0",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-config-prettier": "^6.7.0",
+    "jest": "^24.9.0",
+    "prettier": "^1.19.1",
+    "prettier-webpack-plugin": "^1.2.0",
     "webpack": "^4.41.2",
     "webpack-cli": "^3.3.10",
     "webpack-dev-server": "^3.9.0"
