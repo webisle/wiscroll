@@ -1,6 +1,6 @@
 # wiscroll
 
-Scroll based animation JavaScript library. Vanilla js, 0 dependencies. Lightweight: around 2.5KB transpiled ES5 UMD version (or 1.4KB ES6 Module version) minified & gzipped. IntersectionObserver based. Performance driven. The library does not handle CSS, but examples with CSS will be put in the documentation. More documentation and demo are coming.
+Scroll based animation JavaScript library. Vanilla js, 0 dependencies. Lightweight: around 2.5KB transpiled [ES5 UMD version](https://github.com/webisle/wiscroll/blob/master/dist/index.js) [[CDN](https://unpkg.com/wiscroll/dist/index.js)] (or 1.4KB [ES6 Module version](https://github.com/webisle/wiscroll/blob/master/dist/index.es6.js) [[CDN](https://unpkg.com/wiscroll/dist/index.es6.js)]) minified & gzipped. IntersectionObserver based. Performance driven. The library does not handle CSS, but examples with CSS will be put in the documentation. More documentation and demo are coming.
 
 <p align="center">
   <img width="378.4" height="891.2" src="https://raw.githubusercontent.com/webisle/wiscroll/master/img/position-demo-gif/position-demo.gif">
