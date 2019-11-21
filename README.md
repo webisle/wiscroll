@@ -157,7 +157,7 @@ Basically, the target changes (scroll event is listened) only between position 1
   * `delay`: throttling delay in milliseconds, the throttling is trailing and not leading
   * `fromIsBelowTo`: boolean, true means the target border in position 1 (from) is below position 2 (to)
 
-## .cancel() : cancel all observers
+## .cancel() : cancel all observers and listeners
 ```javascript
 new Wiscroll(target).cancel();
 ```
