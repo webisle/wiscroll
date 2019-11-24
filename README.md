@@ -16,17 +16,27 @@ Then, import the ES6 module:
 ```javascript
 import Wiscroll from 'wiscroll';
 ```
+
 ## Another way to install: <script>
 OR, add the script file directly in your HTML file:
 ```html
 <script src="https://unpkg.com/wiscroll/dist/index.js"></script>
 ```
+
+## Instantiation
+<pre>
+new Wiscroll(<i>target</i>, <i>root</i>)
+</pre>
+* `target`: target element <sub><sup>(in the [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_concepts_and_usage))</sub></sup>
+* `root` [optional]: root (viewport) element <sub><sup>(in the [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_concepts_and_usage))</sub></sup>, pass `null` to specify the browser viewport, default: null
+
 ## .on() : toggle class when one of target's borders passes one of root's borders/lines
 If target's top border passes root's 90% (from top) line, add class name "active" to the target, remove the class when scrolling back:
 ```javascript
 const target = document.querySelector('.wiscroll');
 new Wiscroll(target).on('90% top', 'active');
 ```
+
 ### Syntax
 <pre>
 .on('<i>rootBorderPosition</i> <i>targetBorderPosition</i>', '<i>classes</i>', <i>targetBorderIsHigher</i>)
@@ -34,7 +44,7 @@ new Wiscroll(target).on('90% top', 'active');
 * `rootBorderPosition`: specify a root border (or line), could be `top`, `bottom`, percentage number (e.g. `90%`), pixel number (e.g. `40px`), must be followed by `%` or `px` even if it's 0 (e.g. `0%`), positive number is position from top, negative number is position from bottom (e.g. `-10%` : 10% from bottom)
 * `targetBorderPosition`: specify a target border, could be `top`, `bottom`
 * `classes`: class name to toggle, could be one class or space-separated classes
-* `targetBorderIsHigher` [optional]: add class(es) when the specified target border is (true: higher; false: lower) than the specified root border, otherwise remove class(es), default is true
+* `targetBorderIsHigher` [optional]: add class(es) when the specified target border is (`true`: higher; `false`: lower) than the specified root border, otherwise remove class(es), default: `true`
 
 ## .on() : do whatever you want when one of target's borders passes (or doesn't pass) one of root's borders/lines
 If target's top border is higher than root's 90% (from top) line, show "Target border is higher" in console, otherwise show "Target border is lower":
@@ -48,6 +58,7 @@ new Wiscroll(target).on('90% top',
     }
 );
 ```
+
 ### Syntax
 <pre>
 .on('<i>rootBorderPosition</i> <i>targetBorderPosition</i>', <i>functionWhenTargetHigher</i>, <i>functionWhenTargetLower</i>)
@@ -83,6 +94,7 @@ new Wiscroll(target).on(
     }
 );
 ```
+
 ### Syntax
 <pre>
 .on('<i>rootBorderPosition</i> <i>targetBorderPosition</i> <i>motionDirection</i>', <i>function</i>, <i>initFunction</i>)
@@ -112,6 +124,7 @@ new Wiscroll(target).init(
 )
 .on( ... );
 ```
+
 ### Syntax
 <pre>
 .init('<i>rootBorderPosition</i> <i>targetBorderPosition</i>', <i>initFunction</i>)
@@ -142,6 +155,7 @@ new Wiscroll(target).fromto(
     }
 );
 ```
+
 ### Syntax
 <pre>
 .fromto(
@@ -151,18 +165,18 @@ new Wiscroll(target).fromto(
     <i>options</i>
 )
 </pre>
-Basically, the target changes (scroll event is listened) only between position 1 (from) and position 2 (to).
-* `rootBorderPositionFrom`: specify a root border (or line) for position 1
-* `targetBorderPositionFrom`: specify a target border for position 1
-* `rootBorderPositionTo`: specify a root border (or line) for position 2
-* `targetBorderPositionTo`: specify a target border for position 2
-* `function`: function to be executed continuously when scrolling between position 1 and 2, it receives two parameters: `position` (from 0 to 1, it could be negative or greater than 1 if it's out of boundary) and `entry` object
+Basically, the target changes (scroll event is listened) only between position `0` (from) and position `1` (to).
+* `rootBorderPositionFrom`: specify a root border (or line) for position `0`
+* `targetBorderPositionFrom`: specify a target border for position `0`
+* `rootBorderPositionTo`: specify a root border (or line) for position `1`
+* `targetBorderPositionTo`: specify a target border for position `1`
+* `function`: function to be executed continuously when scrolling between position `0` and `1`, it receives two parameters: `position` (from `0` to `1`, it could be negative or greater than `1` if it's out of boundary) and `entry` object
 * `options` [optional]: object of options:
   * `init`: initial function
-  * `in`: function to be executed when target is going into the area between position 1 and 2
-  * `out`: function to be executed when target is going out of the area between position 1 and 2 (note that because of throttling, out function could be executed before the last scroll function call)
-  * `delay`: throttling delay in milliseconds, the throttling is trailing and not leading
-  * `fromIsBelowTo`: boolean, true means the target border in position 1 (from) is below position 2 (to)
+  * `in`: function to be executed when target is going into the area between position `0` and `1`
+  * `out`: function to be executed when target is going out of the area between position `0` and `1` (note that because of throttling, out function could be executed before the last scroll function call)
+  * `delay`: throttling delay in milliseconds, the throttling is trailing and not leading, default: `150`
+  * `fromIsBelowTo`: boolean, true means the target border in position `0` (from) is below position `1` (to), default: `true`
 
 ## .cancel() : cancel all observers and listeners
 ```javascript
