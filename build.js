@@ -28,17 +28,15 @@ rollup({
     }),
     terser()
   ]
-}).then((bundle) => {
-  bundle.write({
-    banner: umdBanner,
-    file: pkg['umd:main'],
-    format: 'umd',
-    name: pkg['umd:name']
-  }).then(() => {
-    const data = fs.readFileSync(pkg['umd:main'], 'utf8');
-    const bytes = gzipSize.sync(data);
-    console.info(`Gzipped UMD size: ${ prettyBytes(bytes) }`);
-  });
+}).then((bundle) => bundle.write({
+  banner: umdBanner,
+  file: pkg['umd:main'],
+  format: 'umd',
+  name: pkg['umd:name']
+})).then(() => {
+  const data = fs.readFileSync(pkg['umd:main'], 'utf8');
+  const bytes = gzipSize.sync(data);
+  console.info(`Gzipped UMD size: ${ prettyBytes(bytes) }`);
 });
 
 rollup({
@@ -46,14 +44,12 @@ rollup({
   plugins: [
     terser()
   ]
-}).then((bundle) => {
-  bundle.write({
+}).then((bundle) => bundle.write({
     banner: esmBanner,
     file: pkg.module,
     format: 'esm'
-  }).then(() => {
-    const data = fs.readFileSync(pkg.module, 'utf8');
-    const bytes = gzipSize.sync(data);
-    console.info(`Gzipped ESM size: ${ prettyBytes(bytes) }`);
-  });
+})).then(() => {
+  const data = fs.readFileSync(pkg.module, 'utf8');
+  const bytes = gzipSize.sync(data);
+  console.info(`Gzipped ESM size: ${ prettyBytes(bytes) }`);
 });

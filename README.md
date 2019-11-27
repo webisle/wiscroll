@@ -27,8 +27,8 @@ OR, add the script file directly in your HTML file:
 <pre>
 new Wiscroll(<i>target</i>, <i>root</i>)
 </pre>
-* `target`: target element <sub><sup>(in the [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_concepts_and_usage))</sub></sup>
-* `root` [optional]: root (viewport) element <sub><sup>(in the [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_concepts_and_usage))</sub></sup>, pass `null` to specify the browser viewport, default: null
+* `target`: target element (in the [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_concepts_and_usage))
+* `root` [optional]: root (viewport) element (in the [IntersectionObserver](https://developer.mozilla.org/en-US/docs/Web/API/Intersection_Observer_API#Intersection_observer_concepts_and_usage)), pass `null` to specify the browser viewport, default: null
 
 ## .on() : toggle class when one of target's borders passes one of root's borders/lines
 If target's top border passes root's 90% (from top) line, add class name "active" to the target, remove the class when scrolling back:
