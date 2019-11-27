@@ -69,8 +69,8 @@ const calculateRootBorder = (rootBorder, rootEl, needUpOrDown, needUnit) => {
 };
 
 // modified lodash throttle, trailing only
-const throttle = (func, delay) => {
-  let context;
+const throttle = (func, delay, context) => {
+  let cont = context;
   let args;
   let result;
   let now;
@@ -80,9 +80,9 @@ const throttle = (func, delay) => {
   const later = () => {
     previous = 0;
     timeout = null;
-    result = func.apply(context, args);
+    result = func.apply(cont, args);
     if (!timeout) {
-      context = null;
+      cont = null;
       args = null;
     }
   };
@@ -90,7 +90,7 @@ const throttle = (func, delay) => {
     now = Date.now();
     if (!previous) previous = now;
     remaining = delay - (now - previous);
-    context = this;
+    cont = undefined;
     args = argus;
     if (remaining <= 0 || remaining > delay) {
       if (timeout) {
@@ -98,9 +98,9 @@ const throttle = (func, delay) => {
         timeout = null;
       }
       previous = now;
-      result = func.apply(context, args);
+      result = func.apply(cont, args);
       if (!timeout) {
-        context = null;
+        cont = null;
         args = null;
       }
     } else if (!timeout) {

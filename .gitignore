@@ -8,6 +8,7 @@ node_modules
 bower_componets
 
 *.sublime*
+.vscode
 
 psd
 thumb
@@ -15,5 +16,13 @@ sketch
 
 .svn/
 
+*.log
+
+.cache
+.eslintcache
+package-lock.json
+
 img/position-demo-gif/original-fw-png/
 img/position-demo-gif/png/
+
+webtest/wiscroll.js

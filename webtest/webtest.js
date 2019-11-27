@@ -1,5 +1,5 @@
 // import Wiscroll from '../src/index';
-// import Wiscroll from '..dist/index';
+// import Wiscroll from '..dist/wiscroll';
 
 const el = document.querySelector('.wiscroll');
 
