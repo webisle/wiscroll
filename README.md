@@ -17,7 +17,7 @@ Then, import the ES6 module:
 import Wiscroll from 'wiscroll';
 ```
 
-## Another way to "install": <script>
+## Another way to "install": `<script>`
 OR, add the script file directly in your HTML file:
 ```html
 <script src="https://unpkg.com/wiscroll"></script>
