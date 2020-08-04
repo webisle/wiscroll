@@ -1,5 +1,7 @@
 # wiscroll
 
+[![MIT License](https://img.shields.io/github/license/webisle/wiscroll)](https://github.com/webisle/wiscroll/blob/master/LICENSE "MIT License")
+
 Scroll based animation JavaScript library. Vanilla js, 0 dependencies. Lightweight: 2.37KB transpiled ES5 UMD version [[CDN](https://unpkg.com/wiscroll)] (or 1.43KB ES6 Module version [[CDN](https://unpkg.com/wiscroll/dist/wiscroll.esm.js)]) minified & gzipped. IntersectionObserver based. Performance driven. The library does not handle CSS, but examples with CSS will be put in the documentation. More documentation and demo are coming.
 
 <p align="center">
